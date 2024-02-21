@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
+import 'package:weather_app/secrets/secrets.dart';
 import 'package:weather_app/widgets/additional_info.dart';
 import 'package:weather_app/widgets/hourly_forecast.dart';
 
@@ -17,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
  //late Future<Map<String,dynamic>> weather;
   Future<Map<String,dynamic>> getWeatherData() async {
     try {
-      String url = "http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=364fb9be45b975b01296a5cda7e1035e";
+      String url = "http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=${API_KEY}";
       final Response = await http.get(Uri.parse(url));
       final encodedData = Response.body;
       Map<String, dynamic> data2 = jsonDecode(encodedData);
